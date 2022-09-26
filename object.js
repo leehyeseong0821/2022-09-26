@@ -5,10 +5,25 @@ const button = document.querySelector("button");
 
 let validStatus = [false, false, false, false, false];
 
+let inputObjects = new Array();
+
 button.onclick = () => {
   inputs.forEach((input, index) => {
+    let test = 10;
+    let inputObj = {
+      value: input.value,
+      placeholder: input.placeholder,
+      print: () => {
+        console.log(inputObj.placeholder + "print 메소드 실행");
+      },
+      test: test,
+    };
+    inputObjects.push(inputObj);
+
     validStatus[index] = !inputIsEmpty(input.value);
   });
+
+  console.log(inputObjects);
 
   if (validStatus.includes(false)) {
     for (let i = 0; i < validStatus.length; i++) {
